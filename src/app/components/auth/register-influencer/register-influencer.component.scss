@@ -1,4 +1,44 @@
 .container {
-  max-width: 700px;
-  height: 700px;
+  width: 400px;
+  padding: 20px;
+}
+.input-group {
+  margin-top: 20px;
+  // height: 500px;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+.input-label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.input-validation {
+  color: #ff6315;
+  margin-top: 3px;
+  font-size: 13px;
+}
+.hint {
+  font-weight: 700;
+  padding: 10px 0 20px 0;
+  color: grey;
+  margin: 0;
+}
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/deep/ .mat-tab-label.mat-ripple {
+  min-width: 0;
+  flex-grow: 1;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: grey;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none;
 }

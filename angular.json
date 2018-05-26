@@ -21,11 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss",
-              {
-                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
-              }
+              "./node_modules/semantic-ui-css/semantic.min.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },

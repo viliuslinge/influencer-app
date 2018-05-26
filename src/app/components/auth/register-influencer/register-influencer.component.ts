@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as Parse from 'parse';
 
 type UserFields =
   'name' |
@@ -20,6 +21,9 @@ type UserFields =
 })
 export class RegisterInfluencerComponent implements OnInit {
 
+  selectedTabIndex = 0;
+  user;
+
   userForm: FormGroup;
   formErrors: FormErrors = {
     'name': '',
@@ -29,7 +33,7 @@ export class RegisterInfluencerComponent implements OnInit {
     'phone': '',
     'email': '',
     'city': '',
-    'categories': '',
+    'categories': ''
   };
   validationMessages = {
     'name': {
@@ -56,7 +60,7 @@ export class RegisterInfluencerComponent implements OnInit {
     },
     'categories': {
       'required': 'Oops! Please choose at least one category'
-    },
+    }
   };
 
   constructor(
@@ -96,7 +100,7 @@ export class RegisterInfluencerComponent implements OnInit {
         ]],
         'categories': ['', [
           Validators.required,
-        ]],
+        ]]
       }
     );
     this.userForm.valueChanges.subscribe(
@@ -111,15 +115,15 @@ export class RegisterInfluencerComponent implements OnInit {
     }
     const form = this.userForm;
     for (const field in this.formErrors) {
-      if (Object.prototype.hasOwnProperty.bind(this.formErrors, field)) {
+      if (Object.prototype.hasOwnProperty.call(this.formErrors, field)) {
         this.formErrors[field] = '';
         const control = form.get(field);
         if (control && control.dirty && !control.valid) {
-          const message = this.validationMessages[field];
+          const messages = this.validationMessages[field];
           if (control.errors) {
             for (const key in control.errors) {
-              if (Object.prototype.hasOwnProperty.bind(control.errors, key)) {
-                this.formErrors[field] = `${(message as {[key: string]: string})[key]}`;
+              if (Object.prototype.hasOwnProperty.call(control.errors, key)) {
+                this.formErrors[field] = `${(messages as {[key: string]: string})[key]}`;
               }
             }
           }
@@ -129,10 +133,62 @@ export class RegisterInfluencerComponent implements OnInit {
   }
 
   sendForm() {
-    console.log('Form has been sent');
+    this.user = this.userForm.value;
+
+    const Influencer = Parse.Object.extend('Influencer');
+    const influencer = new Influencer();
+
+    influencer.set('Name', this.user.name);
+    influencer.set('Surname', this.user.surname);
+    influencer.set('Instagram Name', this.user['instagram-name']);
+    influencer.set('Youtube Channel', this.user['youtube-channel']);
+    influencer.set('Email', this.user.email);
+    influencer.set('Phone', this.user.phone);
+    influencer.set('City', this.user.city);
+    influencer.set('Categories', this.user.categories);
+
+    influencer.save(null, {
+      success: (user) => {
+        console.log('New influencer created');
+      },
+      error: (user, error) => {
+        console.log('Failed to create new influencer' + error.message);
+      }
+    });
+
+    // const query = new Parse.Query(GameScore);
+    // query.find({
+    //   success: function(influencer) {
+    //     // The object was retrieved successfully.
+    //     console.log(influencer);
+    //   },
+    //   error: function(object, error) {
+    //     // The object was not retrieved successfully.
+    //     // error is a Parse.Error with an error code and message.
+    //   }
+    // });
+
+    // query.get('wP7PsoEEeK', {
+    //   success: function(influencer) {
+    //     // The object was retrieved successfully.
+    //     console.log(influencer);
+    //   },
+    //   error: function(object, error) {
+    //     // The object was not retrieved successfully.
+    //     // error is a Parse.Error with an error code and message.
+    //   }
+    // });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  openNextStep() {
+    this.selectedTabIndex += 1;
+  }
+
+  openPreviousStep() {
+    this.selectedTabIndex -= 1;
   }
 }

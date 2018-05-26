@@ -19,7 +19,6 @@ import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/ui/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterInfluencerComponent } from './components/auth/register-influencer/register-influencer.component';
 
 
@@ -40,7 +39,6 @@ import { RegisterInfluencerComponent } from './components/auth/register-influenc
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
     MatTabsModule
