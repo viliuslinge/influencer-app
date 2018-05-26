@@ -1,0 +1,29 @@
+<h1>Signup</h1>
+
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="signUp()"
+  novalidate>
+  <input
+    type="email"
+    formControlName="email"
+    placeholder="Email">
+  <p *ngIf="formErrors.email">{{ formErrors.email }}</p>
+
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Password">
+  <p *ngIf="formErrors.password">{{ formErrors.password }}</p>
+
+  <button
+    type="submit"
+    [disabled]="!userForm.valid">
+    Signup
+  </button>
+</form>
+
+<div>
+  <p>Already a member?</p>
+  <a [routerLink]="['../', 'login']">Log in</a>
+</div>

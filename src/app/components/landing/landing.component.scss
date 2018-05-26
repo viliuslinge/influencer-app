@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.category {
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category--influencer {
+  background-color: pink;
+  background-image: url('../../../assets/cover-influencer.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category--brand {
+  background-color: lightblue;
+}
+.category__title {
+  color: white;
+}

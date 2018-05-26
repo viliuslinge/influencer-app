@@ -1,0 +1,231 @@
+
+  <mat-tab label="1">
+    Lorem
+  </mat-tab>
+  <mat-tab label="2">
+    Lorem
+  </mat-tab>
+  <mat-tab label="3">
+    No content
+  </mat-tab>
+
+
+
+
+<div class="container">
+  <form
+    class="needs-validation"
+    [formGroup]="userForm"
+    (onSubmit)="sendForm()"
+    novalidate>
+    <mat-tab-group>
+
+      <mat-tab label="1">
+        <div class="form-group">
+          <label for="instagram">Instagram name</label>
+          <input
+            id="instagram"
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="Instagram name"
+            formControlName="instagram-name">
+          <p *ngIf="formErrors['instagram-name']">{{ formErrors['instagram-name'] }}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="youtube">Youtube channel name</label>
+          <input
+            id="youtube"
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="Youtube channel name"
+            formControlName="youtube-channel">
+          <p *ngIf="formErrors['youtube-channel']">{{ formErrors['youtube-channel'] }}</p>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="2">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            class="form-control"
+            type="text"
+            placeholder="Name"
+            formControlName="name">
+          <p *ngIf="formErrors.name">{{ formErrors.name }}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input
+            id="surname"
+            class="form-control"
+            type="text"
+            placeholder="Surame"
+            formControlName="surname">
+          <p *ngIf="formErrors.surname">{{ formErrors.surname }}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            id="phone"
+            class="form-control"
+            type="text"
+            placeholder="Phone"
+            formControlName="phone">
+          <p *ngIf="formErrors.phone">{{ formErrors.phone }}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            class="form-control"
+            type="email"
+            placeholder="Email"
+            formControlName="email">
+          <p *ngIf="formErrors.email">{{ formErrors.email }}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <input
+            id="city"
+            class="form-control"
+            type="city"
+            placeholder="City"
+            formControlName="city">
+          <p *ngIf="formErrors.city">{{ formErrors.city }}</p>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="3">
+        <div class="form-group">
+          <label for="categories">Categories</label>
+          <input
+            id="categories"
+            class="form-control"
+            type="categories"
+            placeholder="Categories"
+            formControlName="categories">
+          <p *ngIf="formErrors.categories">{{ formErrors.categories }}</p>
+        </div>
+
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!userForm.valid">
+          Send
+        </button>
+      </mat-tab>
+
+    </mat-tab-group>
+  </form>
+</div>
+
+<!-- <div class="container">
+  <form
+    class="needs-validation"
+    [formGroup]="userForm"
+    (onSubmit)="sendForm()"
+    novalidate>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        class="form-control"
+        type="text"
+        placeholder="Name"
+        formControlName="name">
+      <p *ngIf="formErrors.name">{{ formErrors.name }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input
+        id="surname"
+        class="form-control"
+        type="text"
+        placeholder="Surame"
+        formControlName="surname">
+      <p *ngIf="formErrors.surname">{{ formErrors.surname }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="instagram">Instagram name</label>
+      <input
+        id="instagram"
+        class="form-control"
+        type="text"
+        placeholder="Instagram name"
+        formControlName="instagram-name">
+      <p *ngIf="formErrors['instagram-name']">{{ formErrors['instagram-name'] }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="youtube">Youtube channel name</label>
+      <input
+        id="youtube"
+        class="form-control"
+        type="text"
+        placeholder="Youtube channel name"
+        formControlName="youtube-channel">
+      <p *ngIf="formErrors['youtube-channel']">{{ formErrors['youtube-channel'] }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        id="phone"
+        class="form-control"
+        type="text"
+        placeholder="Phone"
+        formControlName="phone">
+      <p *ngIf="formErrors.phone">{{ formErrors.phone }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        class="form-control"
+        type="email"
+        placeholder="Email"
+        formControlName="email">
+      <p *ngIf="formErrors.email">{{ formErrors.email }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        id="city"
+        class="form-control"
+        type="city"
+        placeholder="City"
+        formControlName="city">
+      <p *ngIf="formErrors.city">{{ formErrors.city }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="categories">Categories</label>
+      <input
+        id="categories"
+        class="form-control"
+        type="categories"
+        placeholder="Categories"
+        formControlName="categories">
+      <p *ngIf="formErrors.categories">{{ formErrors.categories }}</p>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!userForm.valid">
+      Send
+    </button>
+
+  </form>
+</div> -->
