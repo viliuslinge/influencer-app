@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.category {
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category--influencer {
+  background-image: url('../../../assets/cover-influencer.jpeg');
+}
+.category--brand {
+  // background-color: lightblue;
+  background-image: url('../../../assets/cover-brand.jpg');
+}
+.category__title {
+  color: white;
+  font-size: 5rem;
+}

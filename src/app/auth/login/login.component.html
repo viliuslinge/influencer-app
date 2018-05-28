@@ -1,0 +1,68 @@
+<div class="container">
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="adminLogIn()"
+    novalidate
+    class="form">
+
+    <div class="login-message-box">
+      <p
+        class="login-message login-message--error"
+        *ngIf="loginMessage.error">
+        {{ loginMessage.error }}
+      </p>
+      <p
+        class="login-message login-message--valid"
+        *ngIf="loginMessage.valid">
+        {{ loginMessage.valid }}
+      </p>
+    </div>
+
+    <div class="input-box">
+      <label
+        for="text"
+        class="input-label">
+        Username
+      </label>
+      <div class="ui input big">
+        <input
+          id="username"
+          type="username"
+          placeholder="Username"
+          formControlName="username">
+      </div>
+      <p
+        class="input-validation"
+        *ngIf="formErrors.username">
+        {{ formErrors.username }}
+      </p>
+    </div>
+
+    <div class="input-box">
+      <label
+        for="password"
+        class="input-label">
+        Password
+      </label>
+      <div class="ui input big">
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          formControlName="password">
+      </div>
+      <p
+        class="input-validation"
+        *ngIf="formErrors.password">
+        {{ formErrors.password }}
+      </p>
+    </div>
+
+    <button
+      class="ui big primary button login-button"
+      type="submit"
+      [disabled]="!userForm.valid">
+      Login
+    </button>
+  </form>
+</div>

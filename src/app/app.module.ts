@@ -10,16 +10,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 
+// My Services/Guards
+import { AuthGuard } from './core/auth.guard';
+import { AuthService } from './core/auth.service';
+
 // My Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LandingComponent } from './containers/landing/landing.component';
+import { AdminComponent } from './containers/admin/admin.component';
 import { FooterComponent } from './components/ui/footer/footer.component';
-import { RegisterInfluencerComponent } from './components/auth/register-influencer/register-influencer.component';
+import { RegisterInfluencerComponent } from './auth/register-influencer/register-influencer.component';
+import { AdminNavbarComponent } from './components/admin-ui/admin-navbar/admin-navbar.component';
+import { InfluencersComponent } from './containers/influencers/influencers.component';
+import { BrandsComponent } from './containers/brands/brands.component';
+import { CampaignsComponent } from './containers/campaigns/campaigns.component';
+import { RegistrationsComponent } from './containers/registrations/registrations.component';
 
 
 @NgModule({
@@ -29,10 +37,14 @@ import { RegisterInfluencerComponent } from './components/auth/register-influenc
     RegisterComponent,
     LoginComponent,
     LandingComponent,
-    HomeComponent,
-    ProfileComponent,
+    AdminComponent,
     FooterComponent,
-    RegisterInfluencerComponent
+    RegisterInfluencerComponent,
+    AdminNavbarComponent,
+    InfluencersComponent,
+    BrandsComponent,
+    CampaignsComponent,
+    RegistrationsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +55,10 @@ import { RegisterInfluencerComponent } from './components/auth/register-influenc
     MatDialogModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [RegisterInfluencerComponent]
 })

@@ -1,0 +1,19 @@
+<aside class="navbar">
+  <ul class="button-box">
+    <li
+      *ngFor="let button of buttonList"
+      [routerLink]="[button | lowercase]"
+      routerLinkActive="navbar-button--active"
+      class="navbar-button">
+      {{ button }}
+    </li>
+  </ul>
+
+  <button
+    class="ui inverted button tiny"
+    (click)="adminLogOut()">
+    Log out
+  </button>
+</aside>
+
+<!-- [ngStyle]="!buttonList ? {'color': 'blue'} : {'color': 'green'}" -->

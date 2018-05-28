@@ -1,17 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './components/auth/register/register.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { LandingComponent } from './containers/landing/landing.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AdminComponent } from './containers/admin/admin.component';
+import { InfluencersComponent } from './containers/influencers/influencers.component';
+import { BrandsComponent } from './containers/brands/brands.component';
+import { CampaignsComponent } from './containers/campaigns/campaigns.component';
+import { RegistrationsComponent } from './containers/registrations/registrations.component';
+
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'signup', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile/:id', component: ProfileComponent }
+  { path: 'admin/login', component: LoginComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: 'influencers', component: InfluencersComponent, canActivate: [AuthGuard] },
+      { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
+      { path: 'campaigns', component: CampaignsComponent, canActivate: [AuthGuard] },
+      { path: 'registrations', component: RegistrationsComponent, canActivate: [AuthGuard] }
+    ],
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
