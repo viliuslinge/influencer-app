@@ -23,6 +23,15 @@ export class RegisterInfluencerComponent implements OnInit {
 
   selectedTabIndex = 0;
   user;
+  selectOptions: Array<string> = [
+    'Beauty',
+    'Architecture',
+    'Design',
+    'Science',
+    'Space'
+  ];
+  selectedOptions: Array<string> = [];
+  formSent: Boolean = false;
 
   userForm: FormGroup;
   formErrors: FormErrors = {
@@ -45,9 +54,6 @@ export class RegisterInfluencerComponent implements OnInit {
     'instagram-name': {
       'required': 'Oops! Please enter your instagram name'
     },
-    'youtube-channel': {
-      'required': 'Oops! Please enter your youtube channel name'
-    },
     'phone': {
       'required': 'Oops! Please enter your phone number'
     },
@@ -61,6 +67,10 @@ export class RegisterInfluencerComponent implements OnInit {
     'categories': {
       'required': 'Oops! Please choose at least one category'
     }
+  };
+  registrationMessage = {
+    'success': '',
+    'error': ''
   };
 
   constructor(
@@ -85,9 +95,7 @@ export class RegisterInfluencerComponent implements OnInit {
         'instagram-name': ['', [
           Validators.required,
         ]],
-        'youtube-channel': ['', [
-          Validators.required,
-        ]],
+        'youtube-channel': ['', []],
         'phone': ['', [
           Validators.required,
         ]],
@@ -149,41 +157,14 @@ export class RegisterInfluencerComponent implements OnInit {
 
     influencer.save(null, {
       success: (user) => {
-        console.log('New influencer created');
+        this.registrationMessage.success = 'You have been registered!';
       },
       error: (user, error) => {
-        console.log('Failed to create new influencer' + error.message);
+        this.registrationMessage.error = 'Some shit happened! Try again later...';
       }
     });
 
-    // const roleACL = new Parse.ACL();
-    // roleACL.setPublicReadAccess(true);
-    // const role = new Parse.Role('Administrator', roleACL);
-    // role.getUsers().add(usersToAddToRole);
-    // role.save();
-
-    // const query = new Parse.Query(GameScore);
-    // query.find({
-    //   success: function(influencer) {
-    //     // The object was retrieved successfully.
-    //     console.log(influencer);
-    //   },
-    //   error: function(object, error) {
-    //     // The object was not retrieved successfully.
-    //     // error is a Parse.Error with an error code and message.
-    //   }
-    // });
-
-    // query.get('wP7PsoEEeK', {
-    //   success: function(influencer) {
-    //     // The object was retrieved successfully.
-    //     console.log(influencer);
-    //   },
-    //   error: function(object, error) {
-    //     // The object was not retrieved successfully.
-    //     // error is a Parse.Error with an error code and message.
-    //   }
-    // });
+    this.formSent = true;
   }
 
   onNoClick(): void {

@@ -10,6 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 
+// Semantic
+import { SuiModule } from 'ng2-semantic-ui';
+import { SuiSelectModule } from 'ng2-semantic-ui';
+
 // My Services/Guards
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
@@ -28,6 +32,7 @@ import { InfluencersComponent } from './containers/influencers/influencers.compo
 import { BrandsComponent } from './containers/brands/brands.component';
 import { CampaignsComponent } from './containers/campaigns/campaigns.component';
 import { RegistrationsComponent } from './containers/registrations/registrations.component';
+import { AdminTopNavbarComponent } from './components/admin-ui/admin-top-navbar/admin-top-navbar.component';
 
 
 @NgModule({
@@ -44,7 +49,8 @@ import { RegistrationsComponent } from './containers/registrations/registrations
     InfluencersComponent,
     BrandsComponent,
     CampaignsComponent,
-    RegistrationsComponent
+    RegistrationsComponent,
+    AdminTopNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,9 @@ import { RegistrationsComponent } from './containers/registrations/registrations
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    SuiModule,
+    SuiSelectModule
   ],
   providers: [
     AuthGuard,

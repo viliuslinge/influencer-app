@@ -1,3 +1,11 @@
-<p>
-  registrations works!
-</p>
+<div>
+  <ul>
+    <li *ngFor="let item of registrations">
+      <p>{{ item.id }}</p>
+      <p>{{ item.attributes.Name }}</p>
+      <p>{{ item.attributes.Surname }}</p>
+      <p>{{ item.attributes.Email }}</p>
+      <p>{{ item.attributes.isApproved}}</p>
+    </li>
+  </ul>
+</div>

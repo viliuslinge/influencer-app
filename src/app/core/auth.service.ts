@@ -14,7 +14,7 @@ export class AuthService {
   logIn(username, password) {
     return Parse.User.logIn(username, password, {
       success: (user) => {
-        setTimeout(() => this.router.navigate(['/admin']), 1000);
+        setTimeout(() => this.router.navigate(['/admin/influencers']), 1000);
       }
     });
   }

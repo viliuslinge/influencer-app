@@ -4,7 +4,24 @@
       *ngFor="let button of buttonList"
       [routerLink]="[button | lowercase]"
       routerLinkActive="navbar-button--active"
-      class="navbar-button">
+      class="navbar-button"
+      (click)="setCurrentPage(button)">
+      <i
+        *ngIf="button === 'Influencers'"
+        class="navbar-button-icon user icon">
+      </i>
+      <i
+        *ngIf="button === 'Brands'"
+        class="navbar-button-icon tags icon">
+      </i>
+      <i
+        *ngIf="button === 'Campaigns'"
+        class="navbar-button-icon flag icon">
+      </i>
+      <i
+        *ngIf="button === 'Registrations'"
+        class="navbar-button-icon align left icon">
+      </i>
       {{ button }}
     </li>
   </ul>

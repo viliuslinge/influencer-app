@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth.service';
 import * as Parse from 'parse';
@@ -17,12 +17,20 @@ export class AdminNavbarComponent implements OnInit {
     'Registrations'
   ];
 
+  @Output() routeChange = new EventEmitter();
+  currentPage: String;
+
   constructor(
     private router: Router,
     private authService: AuthService
   ) { }
 
   ngOnInit() {
+  }
+
+  setCurrentPage(data) {
+    this.currentPage = data;
+    this.routeChange.emit(this.currentPage);
   }
 
   adminLogOut() {

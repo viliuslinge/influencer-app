@@ -1,5 +1,5 @@
 .container {
-  width: 400px;
+  width: 350px;
   padding: 20px;
 }
 .form-step {
@@ -11,7 +11,7 @@
 .input-box {
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 90px;
 }
 .input-label {
   font-size: 15px;
@@ -39,8 +39,11 @@
   flex-grow: 1;
   font-size: 0.8rem;
   font-weight: 700;
-  color: grey;
+  color: rgb(177, 177, 177);
   padding: 0;
+}
+/deep/ .mat-tab-label.mat-ripple.mat-tab-label-active {
+  color: #000;
 }
 .mat-card:not([class*=mat-elevation-z]) {
   box-shadow: none;

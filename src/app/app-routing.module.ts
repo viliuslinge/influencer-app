@@ -17,10 +17,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: 'influencers', component: InfluencersComponent, canActivate: [AuthGuard] },
-      { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
-      { path: 'campaigns', component: CampaignsComponent, canActivate: [AuthGuard] },
-      { path: 'registrations', component: RegistrationsComponent, canActivate: [AuthGuard] }
+      { path: 'influencers', component: InfluencersComponent },
+      { path: 'brands', component: BrandsComponent },
+      { path: 'campaigns', component: CampaignsComponent },
+      { path: 'registrations', component: RegistrationsComponent }
     ],
     canActivate: [AuthGuard]
   }
