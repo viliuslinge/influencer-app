@@ -5,248 +5,257 @@
     <mat-tab-group [(selectedIndex)]="selectedTabIndex">
 
       <mat-tab label="1. Social" disabled>
-        <p class="hint">
-          Fill out at least one account name of your social media platform
-        </p>
+        <div class="form-step">
+          <p class="hint">
+            Fill out at least one account name of your social media platform
+          </p>
 
-        <div class="input-group">
-          <div class="input-box">
-            <label
-              for="instagram"
-              class="input-label">
-              Instagram name
-            </label>
-            <div class="ui input big">
-              <input
-                id="instagram"
-                type="text"
-                placeholder="Instagram name"
-                formControlName="instagram-name">
+          <div class="input-group">
+            <div class="input-box">
+              <label
+                for="instagram"
+                class="input-label">
+                Instagram name
+              </label>
+              <div class="ui input big">
+                <input
+                  id="instagram"
+                  type="text"
+                  placeholder="Instagram name"
+                  formControlName="instagram-name">
+              </div>
+              <p
+                class="input-validation"
+                *ngIf="formErrors['instagram-name']">
+                {{ formErrors['instagram-name'] }}
+              </p>
             </div>
-            <p
-              class="input-validation"
-              *ngIf="formErrors['instagram-name']">
-              {{ formErrors['instagram-name'] }}
-            </p>
+
+            <div class="input-box">
+              <label
+                for="youtube"
+                class="input-label">
+                Youtube channel name
+              </label>
+              <div class="ui input big">
+                <input
+                  id="youtube"
+                  type="text"
+                  placeholder="Youtube channel name"
+                  formControlName="youtube-channel">
+              </div>
+              <p
+                class="input-validation"
+                *ngIf="formErrors['youtube-channel']">
+                {{ formErrors['youtube-channel'] }}
+              </p>
+            </div>
           </div>
 
-          <div class="input-box">
-            <label
-              for="youtube"
-              class="input-label">
-              Youtube channel name
-            </label>
-            <div class="ui input big">
-              <input
-                id="youtube"
-                type="text"
-                placeholder="Youtube channel name"
-                formControlName="youtube-channel">
-            </div>
-            <p
-              class="input-validation"
-              *ngIf="formErrors['youtube-channel']">
-              {{ formErrors['youtube-channel'] }}
-            </p>
+          <div class="button-container">
+            <button
+              class="ui primary big button"
+              (click)="openNextStep()"
+              [disabled]=
+                "!userForm.controls['youtube-channel'].valid ||
+                !userForm.controls['instagram-name'].valid">
+              Next
+            </button>
           </div>
-        </div>
-
-        <div class="button-container">
-          <button
-            class="ui primary big button"
-            (click)="openNextStep()"
-            [disabled]=
-              "!userForm.controls['youtube-channel'].valid ||
-              !userForm.controls['instagram-name'].valid">
-            Next
-          </button>
         </div>
       </mat-tab>
 
       <mat-tab label="2. Personal" disabled>
-        <p class="hint">
-          Tell us more about you!<br> Fill out your personal information
-        </p>
+        <div class="form-step">
+          <p class="hint">
+            Tell us more about you!<br> Fill out your personal information
+          </p>
 
-        <div class="input-group">
-          <div class="input-box">
-            <label
-              for="name"
-              class="input-label">
-              Name
-            </label>
-            <div class="ui input big">
-              <input
-                id="name"
-                type="text"
-                placeholder="Name"
-                formControlName="name">
+          <div class="input-group">
+            <div class="input-box">
+              <label
+                for="name"
+                class="input-label">
+                Name
+              </label>
+              <div class="ui input big">
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Name"
+                  formControlName="name">
+              </div>
+              <p
+                class="input-validation"
+                *ngIf="formErrors.name">
+                {{ formErrors.name }}
+              </p>
             </div>
-            <p
-              class="input-validation"
-              *ngIf="formErrors.name">
-              {{ formErrors.name }}
-            </p>
+
+            <div class="input-box">
+              <label
+                for="surname"
+                class="input-label">
+                Surname
+              </label>
+              <div class="ui input big">
+                <input
+                  id="surname"
+                  type="text"
+                  placeholder="Surame"
+                  formControlName="surname">
+              </div>
+              <p
+                class="input-validation"
+                *ngIf="formErrors.surname">
+                {{ formErrors.surname }}
+              </p>
+            </div>
           </div>
 
-          <div class="input-box">
-            <label
-              for="surname"
-              class="input-label">
-              Surname
-            </label>
-            <div class="ui input big">
-              <input
-                id="surname"
-                type="text"
-                placeholder="Surame"
-                formControlName="surname">
-            </div>
-            <p
-              class="input-validation"
-              *ngIf="formErrors.surname">
-              {{ formErrors.surname }}
-            </p>
+          <div class="button-container">
+            <button
+              class="ui big button"
+              (click)="openPreviousStep()">
+              Back
+            </button>
+            <button
+              class="ui primary big button"
+              (click)="openNextStep()"
+              [disabled]=
+                "!userForm.controls.name.valid ||
+                !userForm.controls.surname.valid">
+              Next
+            </button>
           </div>
-        </div>
-
-        <div class="button-container">
-          <button
-            class="ui big button"
-            (click)="openPreviousStep()">
-            Back
-          </button>
-          <button
-            class="ui primary big button"
-            (click)="openNextStep()"
-            [disabled]=
-              "!userForm.controls.name.valid ||
-              !userForm.controls.surname.valid">
-            Next
-          </button>
         </div>
       </mat-tab>
 
       <mat-tab label="3. Categories" disabled>
-        <p class="hint">
-          Choose any category of products you would prefer to advertise
-        </p>
+        <div class="form-step">
+          <p class="hint">
+            Choose any category of products you would prefer to advertise
+          </p>
 
-        <div class="input-group">
-          <div class="input-box">
-            <label
-              for="categories"
-              class="input-label">
-              Categories
-            </label>
-            <div class="ui input big">
-              <input
-                id="categories"
-                type="categories"
-                placeholder="Categories"
-                formControlName="categories">
+          <div class="input-group">
+            <div class="input-box">
+              <label
+                for="categories"
+                class="input-label">
+                Categories
+              </label>
+              <div class="ui input big">
+                <input
+                  id="categories"
+                  type="categories"
+                  placeholder="Categories"
+                  formControlName="categories">
+              </div>
+
+              <p
+                class="input-validation"
+                *ngIf="formErrors.categories">
+                {{ formErrors.categories }}
+              </p>
             </div>
-            <p
-              class="input-validation"
-              *ngIf="formErrors.categories">
-              {{ formErrors.categories }}
-            </p>
           </div>
-        </div>
 
-        <div class="button-container">
-          <button
-            class="ui big button"
-            (click)="openPreviousStep()">
-            Back
-          </button>
-          <button
-            class="ui primary big button"
-            (click)="openNextStep()"
-            [disabled]="!userForm.controls.categories.valid">
-            Next
-          </button>
+          <div class="button-container">
+            <button
+              class="ui big button"
+              (click)="openPreviousStep()">
+              Back
+            </button>
+            <button
+              class="ui primary big button"
+              (click)="openNextStep()"
+              [disabled]="!userForm.controls.categories.valid">
+              Next
+            </button>
+          </div>
         </div>
       </mat-tab>
 
       <mat-tab label="4. Contacts" disabled>
-        <p class="hint">
-          Let us know how to contact you!
-        </p>
-
-        <div class="input-box">
-          <label
-            for="phone"
-            class="input-label">
-            Phone
-          </label>
-          <div class="ui input big">
-            <input
-              id="phone"
-              type="text"
-              placeholder="Phone"
-              formControlName="phone">
-          </div>
-          <p
-            class="input-validation"
-            *ngIf="formErrors.phone">
-            {{ formErrors.phone }}
+        <div class="form-step">
+          <p class="hint">
+            Let us know how to contact you!
           </p>
-        </div>
 
-        <div class="input-box">
-          <label
-            for="email"
-            class="input-label">
-            Email
-          </label>
-          <div class="ui input big">
-            <input
-              id="email"
-              type="email"
-              placeholder="Email"
-              formControlName="email">
+          <div class="input-box">
+            <label
+              for="phone"
+              class="input-label">
+              Phone
+            </label>
+            <div class="ui input big">
+              <input
+                id="phone"
+                type="text"
+                placeholder="Phone"
+                formControlName="phone">
+            </div>
+            <p
+              class="input-validation"
+              *ngIf="formErrors.phone">
+              {{ formErrors.phone }}
+            </p>
           </div>
-          <p
-            class="input-validation"
-            *ngIf="formErrors.email">
-            {{ formErrors.email }}
-          </p>
-        </div>
 
-        <div class="input-box">
-          <label
-            for="city"
-            class="input-label">
-            City
-          </label>
-          <div class="ui input big">
-            <input
-              id="city"
-              type="city"
-              placeholder="City"
-              formControlName="city">
+          <div class="input-box">
+            <label
+              for="email"
+              class="input-label">
+              Email
+            </label>
+            <div class="ui input big">
+              <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                formControlName="email">
+            </div>
+            <p
+              class="input-validation"
+              *ngIf="formErrors.email">
+              {{ formErrors.email }}
+            </p>
           </div>
-          <p
-            class="input-validation"
-            *ngIf="formErrors.city">
-            {{ formErrors.city }}
-          </p>
-        </div>
 
-        <div class="button-container">
-          <button
-            class="ui big button"
-            (click)="openPreviousStep()">
-            Back
-          </button>
-          <button
-            class="ui primary big button"
-            type="submit"
-            (click)="sendForm()"
-            [disabled]="!userForm.valid">
-            Send
-          </button>
+          <div class="input-box">
+            <label
+              for="city"
+              class="input-label">
+              City
+            </label>
+            <div class="ui input big">
+              <input
+                id="city"
+                type="city"
+                placeholder="City"
+                formControlName="city">
+            </div>
+            <p
+              class="input-validation"
+              *ngIf="formErrors.city">
+              {{ formErrors.city }}
+            </p>
+          </div>
+
+          <div class="button-container">
+            <button
+              class="ui big button"
+              (click)="openPreviousStep()">
+              Back
+            </button>
+            <button
+              class="ui primary big button"
+              type="submit"
+              (click)="sendForm()"
+              [disabled]="!userForm.valid">
+              Send
+            </button>
+          </div>
         </div>
       </mat-tab>
     </mat-tab-group>

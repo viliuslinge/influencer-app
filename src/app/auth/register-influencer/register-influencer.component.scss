@@ -2,9 +2,11 @@
   width: 400px;
   padding: 20px;
 }
+.form-step {
+  min-height: 350px;
+}
 .input-group {
   margin-top: 20px;
-  // height: 500px;
 }
 .input-box {
   display: flex;
@@ -38,6 +40,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: grey;
+  padding: 0;
 }
 .mat-card:not([class*=mat-elevation-z]) {
   box-shadow: none;
